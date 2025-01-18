@@ -23,35 +23,7 @@ To train the SeLoRA make use of the finetuning script:
 ```bash
     python selora_finetuning.py
 ```
-while making sure to have a config.yaml set up with the following structure: LOOK AGAIN
-```bash
-test:
-  unet_path: # path where to save the fine tuned unet
-  txt_encoder_path: # path where to save the fine tuned text encoder
-  imgs_folder:  # path where to save the generated images (I THINK WE DONT USE)
-
-output:
-  path: # output path
-  folder_name: /selora_outputs
-  folder_lora_name: /loras
-
-dataset:
-  main_path: # main path to the dataset 
-  dataset_name: # specific subfolder
-  sequence_type: # modality (i.e. subsubfolder)
-  report_name: # name of the report (settled on metadata.csv)
-  prompts_for_generation: # full path to a .csv file with same structure as report_name, used to generate the images after training
-  
-
-default_random_seed: # random seed used 
-batch_size: # batch size
-lr: # learning rate
-epochs: # number of epochs
-th: 10000.0 # lamda value used for the expansion of the LoRA rank
-
-model:
-  model_id: runwayml/stable-diffusion-v1-5 # model 
-```
+while making sure to have a config.yaml set up as the one provided in 
 
 After generating the images, some simple post processing (background removal) was done. This was used to correct for issues in background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the postprocess_generated_brats.ipynb notebook.
 
@@ -96,7 +68,7 @@ Dataset available at [link](https://www.kaggle.com/datasets/dschettler8845/brats
 Dataset available at [link](https://zenodo.org/records/6624726)
 Labels available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert reviewed annotations were used (found under /csPCa_lesion_delineations/human_expert/resampled).
 
-Minor pre-processing has been done with two notebooks (preprocess_data_brats.ipynb and preprocess_data_picai.ipynb). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The pre processed datasets are made available for convenience in folder '/Datasets/BraTS' and '/Datasets/PICAI'. Each folder than contain the training and testing set used.
+Minor pre-processing has been done with two notebooks available under '/Processing/' (preprocess_data_brats.ipynb and preprocess_data_picai.ipynb). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The pre processed datasets are made available for convenience in folder '/Datasets/BraTS' and '/Datasets/PICAI'. Each folder than contain the training and testing set used.
 
 # FROM HERE ON IT'S CRAP
 ## Installation
