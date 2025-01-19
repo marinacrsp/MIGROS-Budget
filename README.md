@@ -13,11 +13,12 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 - [Example](#example)
 
 ## Introduction
+Low-Rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low Rank adaptation can be used to produce realistic MRI data.
 
 # Training
 
 ## Training SeLoRA
-The original implementation for the SeLoRA training was made available by Mao et al. 2024 at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base and many changes were made to adapt it to the needs of the project.
+Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
 
 To train the SeLoRA make use of the finetuning script: 
 ```bash
