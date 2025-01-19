@@ -80,7 +80,7 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 ```
 
 ### BraTS postprocessing
-After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Process/postprocess_generated_brats.ipynb) notebook.
+After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
 ## Computing Accuracy and AUC
 
