@@ -15,7 +15,7 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 ## Introduction
 Low-rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low-Rank adaptation can be used to produce realistic MRI data.
 
-# Datasets
+## Datasets
 For this project, two publicly available datasets were used.
 
 1. BraTS2021: Brain Tumor Segmentation 2021 Challenge dataset 
@@ -28,9 +28,9 @@ Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/p
 Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
 
-# Training
+## Training
 
-## Training SeLoRA
+### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
 
 To train the SeLoRA make use of the finetuning script: 
@@ -43,7 +43,7 @@ The code automatically generates a dataset for evaluation, taking the prompts fr
 ### Training LoRA
 To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
 
-## Training StyleGAN
+### Training StyleGAN
 We use a StyleGAN3 as our baseline. We refer to the [original repository](https://github.com/NVlabs/stylegan3) for further details.
 1. To train the StyleGAN, first clone the repository:
     ```bash
@@ -69,10 +69,10 @@ We use a StyleGAN3 as our baseline. We refer to the [original repository](https:
 - NOTE 1: Notice how the model does not have an explicit `epochs` parameter. Rather, we use the `kimg` paramter to ensure that the number of update steps is roughly the same as the corresponding Low-rank adaptation setup. We also train for a fixed 25000 steps as the results were observed to be more visually convincing.
 - NOTE 2: Notice how in this case, one needs to train 2 different models, one for cancer-negative images and one for cancer-positive images.
 
-# Evaluation
+## Evaluation
 We obtained our results using the evaluation protocol presented by De Wilde et al. (2023). 
 
-## Computing the FID
+### Computing the FID
 The Frechet Inception Distance is a metric used to assess the quality of generated images. To compute the FID you will need a test dataset containing real images and a synthetic dataset. Then, you can run:
 
 ```bash
@@ -82,7 +82,7 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 ### BraTS postprocessing
 After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
-## Computing Accuracy and AUC
+### Computing Accuracy and AUC
 *TODO: finish*
 
 ## References
