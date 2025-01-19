@@ -52,7 +52,10 @@ We use a StyleGAN3 as our baseline. We refer to the [original repository](https:
     Here you can specify any range of seeds to generate the corresponding number of images.
 Notice how in this case, one needs to train 2 different models, one for cancer-negative images and one for cancer-positive images.
 
-# Computing the FID
+## Evaluation
+We obtained our results using the evaluation protocol presented by De Wilde et al. (2023). 
+
+### Computing the FID
 The Frechet Inception Distance is a metric used to assess the quality of generated images. To compute the FID you will need a test dataset containing real images and a synthetic dataset. Then, you can run:
 
 ```bash
@@ -70,6 +73,11 @@ Dataset available at [link](https://zenodo.org/records/6624726)
 Labels available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert reviewed annotations were used (found under /csPCa_lesion_delineations/human_expert/resampled).
 
 Minor pre-processing has been done with two notebooks available under '/Processing/' (preprocess_data_brats.ipynb and preprocess_data_picai.ipynb). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The pre processed datasets are made available for convenience in folder '/Datasets/BraTS' and '/Datasets/PICAI'. Each folder than contain the training and testing set used.
+
+## References
+- Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196
+- Karras, Tero, et al. "Alias-free generative adversarial networks." Advances in neural information processing systems 34 (2021): 852-863. [LINK](https://arxiv.org/abs/2106.12423)
+- De Wilde, Bram, et al. "Medical diffusion on a budget: textual inversion for medical image generation." arXiv preprint arXiv:2303.13430 (2023). [LINK)(https://arxiv.org/abs/2303.13430)
 
 # FROM HERE ON IT'S CRAP
 ## Installation
