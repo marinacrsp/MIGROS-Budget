@@ -41,7 +41,7 @@ while making sure to have a config.yaml set up as the one provided in *TODO: fin
 The code automatically generates a dataset for evaluation, taking the prompts from *TODO: finish*.
 
 ### Training LoRA
-To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold (consider that normally this value ranges from `1.0` to `1.3`.
+To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
 
 ## Training StyleGAN
 We use a StyleGAN3 as our baseline. We refer to the [original repository](https://github.com/NVlabs/stylegan3) for further details.
