@@ -13,7 +13,20 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 - [Example](#example)
 
 ## Introduction
-Low-Rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low Rank adaptation can be used to produce realistic MRI data.
+Low-rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low-Rank adaptation can be used to produce realistic MRI data.
+
+# Datasets
+For this project, two publicly available datasets were used.
+
+1. BraTS2021: Brain Tumor Segmentation 2021 Challenge dataset 
+Dataset available at [link](https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1)
+
+2. PI-CAI: Prostate Imaging: Cancer AI challenge 
+Dataset available at [link](https://zenodo.org/records/6624726)
+Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert-reviewed annotations were used (found under /csPCa_lesion_delineations/human_expert/resampled).
+
+Minor pre-processing has been done with two notebooks available under [/Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The *pre-processed datasets* are made available for convenience in the folder [/Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [/Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
+
 
 # Training
 
@@ -61,18 +74,6 @@ The Frechet Inception Distance is a metric used to assess the quality of generat
 ```bash
 python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 ```
-
-# Datasets
-For this projects, two publicly available datasets were used.
-
-1. BraTS2021: Brain Tumor Segmentation 2021 Challenge dataset 
-Dataset available at [link](https://www.kaggle.com/datasets/dschettler8845/brats-2021-task1)
-
-2. PI-CAI: Prostate Imaging: Cancer AI challenge 
-Dataset available at [link](https://zenodo.org/records/6624726)
-Labels available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert reviewed annotations were used (found under /csPCa_lesion_delineations/human_expert/resampled).
-
-Minor pre-processing has been done with two notebooks available under '/Processing/' (preprocess_data_brats.ipynb and preprocess_data_picai.ipynb). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The pre processed datasets are made available for convenience in folder '/Datasets/BraTS' and '/Datasets/PICAI'. Each folder than contain the training and testing set used.
 
 ## References
 - Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196
