@@ -83,11 +83,12 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
 ## Computing Accuracy and AUC
+*TODO: finish*
 
 ## References
-- Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196
+- Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196)
 - Karras, Tero, et al. "Alias-free generative adversarial networks." Advances in neural information processing systems 34 (2021): 852-863. [LINK](https://arxiv.org/abs/2106.12423)
-- De Wilde, Bram, et al. "Medical diffusion on a budget: textual inversion for medical image generation." arXiv preprint arXiv:2303.13430 (2023). [LINK)(https://arxiv.org/abs/2303.13430)
+- De Wilde, Bram, et al. "Medical diffusion on a budget: textual inversion for medical image generation." arXiv preprint arXiv:2303.13430 (2023). [LINK](https://arxiv.org/abs/2303.13430)
 
 # FROM HERE ON IT'S CRAP
 ## Installation
