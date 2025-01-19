@@ -34,8 +34,8 @@ Minor pre-processing has been done with two notebooks available under [Processin
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
 
 To train the SeLoRA make use of the finetuning script: 
-```bash
-    python selora_finetuning.py
+```
+python selora_finetuning.py
 ```
 while making sure to have a config.yaml set up as the one provided in *TODO: finish*.
 The code automatically generates a dataset for evaluation, taking the prompts from *TODO: finish*.
