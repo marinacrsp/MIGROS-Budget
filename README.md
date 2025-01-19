@@ -40,7 +40,8 @@ python selora_finetuning.py
 while making sure to have a config.yaml set up as the one provided in *TODO: finish*.
 The code automatically generates a dataset for evaluation, taking the prompts from *TODO: finish*.
 
-After generating the images, some simple post processing (background removal) was done. This was used to correct for issues in background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the postprocess_generated_brats.ipynb notebook.
+### Training LoRA
+To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold (consider that normally this value ranges from `1.0` to `1.3`.
 
 ## Training StyleGAN
 We use a StyleGAN3 as our baseline. We refer to the [original repository](https://github.com/NVlabs/stylegan3) for further details.
@@ -66,15 +67,20 @@ We use a StyleGAN3 as our baseline. We refer to the [original repository](https:
     Here you can specify any range of seeds to generate the corresponding number of images.
 Notice how in this case, one needs to train 2 different models, one for cancer-negative images and one for cancer-positive images.
 
-## Evaluation
+# Evaluation
 We obtained our results using the evaluation protocol presented by De Wilde et al. (2023). 
 
-### Computing the FID
+## Computing the FID
 The Frechet Inception Distance is a metric used to assess the quality of generated images. To compute the FID you will need a test dataset containing real images and a synthetic dataset. Then, you can run:
 
 ```bash
 python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 ```
+
+### BraTS postprocessing
+After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Process/postprocess_generated_brats.ipynb) notebook.
+
+## Computing Accuracy and AUC
 
 ## References
 - Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196
