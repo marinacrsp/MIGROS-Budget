@@ -65,7 +65,9 @@ We use a StyleGAN3 as our baseline. We refer to the [original repository](https:
     python gen_images.py --outdir=/path/to/output_directory --seeds=0-10  --network= /path/to/model
     ```
     Here you can specify any range of seeds to generate the corresponding number of images.
-Notice how in this case, one needs to train 2 different models, one for cancer-negative images and one for cancer-positive images.
+
+- NOTE 1: Notice how the model does not have an explicit `epochs` parameter. Rather, we use the `kimg` paramter to ensure that the number of update steps is roughly the same as the corresponding Low-rank adaptation setup. We also train for a fixed 25000 steps as the results were observed to be more visually convincing.
+- NOTE 2: Notice how in this case, one needs to train 2 different models, one for cancer-negative images and one for cancer-positive images.
 
 # Evaluation
 We obtained our results using the evaluation protocol presented by De Wilde et al. (2023). 
