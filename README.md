@@ -37,7 +37,8 @@ To train the SeLoRA make use of the finetuning script:
 ```bash
     python selora_finetuning.py
 ```
-while making sure to have a config.yaml set up as the one provided in 
+while making sure to have a config.yaml set up as the one provided in *TODO: finish*.
+The code automatically generates a dataset for evaluation, taking the prompts from *TODO: finish*.
 
 After generating the images, some simple post processing (background removal) was done. This was used to correct for issues in background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the postprocess_generated_brats.ipynb notebook.
 
