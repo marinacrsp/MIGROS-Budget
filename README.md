@@ -1,8 +1,10 @@
 # MIGROS Budget: Medical Image Generation, Retraining on a Strict Budget
 
 This is the repository for the project for the DL course.\
-Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
-![fig_models_brats_page-0001](https://github.com/user-attachments/assets/ca7c82fa-ce45-4a4d-98fd-35ec1e9f75a0)
+Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole 
+
+
+<img src="https://github.com/user-attachments/assets/4a0fa0a8-1b4f-4a7d-8210-908252b2d439" alt="Image generation example" width="600"/> 
 
 ## Table of Contents
 
@@ -15,6 +17,7 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 
 ## Introduction
 Low-rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low-Rank adaptation can be used to produce realistic MRI data.
+
 
 ## Datasets
 For this project, two publicly available datasets were used.
