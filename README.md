@@ -31,18 +31,24 @@ Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/p
 
 Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
-
+## Environment 
+For setting up the environment in this repo a `environment.yml` file has been uploaded. 
+Install environment:
+```
+conda env create --file environment.yml
+```
+Additionally, install the following packages:
+```
+pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cu124
+```
 ## Training
 
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
-
-To train the SeLoRA make use of the finetuning script: 
+To train the SeLoRA, make sure to have the `config.yaml` directories of `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`. Then uncomment the following line of code from the `experiment.sh` file: 
 ```
 python selora_finetuning.py
 ```
-while making sure to have a config.yaml set up as the one provided in *TODO: finish*.
-The code automatically generates a dataset for evaluation, taking the prompts from *TODO: finish*.
 
 ### Training LoRA
 To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
