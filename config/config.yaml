@@ -1,0 +1,33 @@
+#TODO: remove useless fields
+test:
+  #unet_path: /work/scratch/lanceschi/output/tests/diffusion_pytorch_model.safetensors
+  #txt_encoder_path: /work/scratch/lanceschi/output/tests/model.safetensors
+  #imgs_folder:  /work/scratch/lanceschi/output/tests/img
+
+output:
+  path: /work/scratch/lanceschi/output/tests/selora_outputs
+  #folder_name: /selora_outputs
+  #folder_lora_name: /loras
+
+dataset:
+  dataset_path: /home/lanceschi/migros_deepL/picai202
+  #main_path: /home/lanceschi/migros_deepL
+  #dataset_name: /picai200
+  #sequence_type: /t2w
+  report_name: /metadata.csv
+  prompts_for_generation: /home/lanceschi/migros_deepL/metadata_image_generation_picai.csv
+  
+
+default_random_seed: 42
+batch_size: 8
+lr: 1.e-4
+epochs: 150
+th: 1.0
+rank: 1 
+
+model:
+  model_id: runwayml/stable-diffusion-v1-5
+  #unet_modules: to_v # not being used
+  #txt_encoder_modules: v_proj # not being used
+  #rank: 8 # not being used
+  #expandable: False # not being used
