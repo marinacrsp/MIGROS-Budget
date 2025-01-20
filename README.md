@@ -1,7 +1,8 @@
 # MIGROS Budget: Medical Image Generation, Retraining on a Strict Budget
 
-This is the repository for the project for the DL course.
+This is the repository for the project for the DL course.\
 Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
+![fig_models_brats_page-0001](https://github.com/user-attachments/assets/ca7c82fa-ce45-4a4d-98fd-35ec1e9f75a0)
 
 ## Table of Contents
 
