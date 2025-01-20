@@ -6,12 +6,12 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 
 <img src="https://github.com/user-attachments/assets/4a0fa0a8-1b4f-4a7d-8210-908252b2d439" alt="Image generation example" width="600"/> 
 
-## Table of Contents
+## Table of Contents 
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Datasets](#datasets)
-- [Usage](#usage)
+- [Introduction](##introduction)
+- [Datasets](##Datasets)
+- [Environment](##Environment)
+- [Training](##Training)
 - [Computing the FID](#computing-the-fid)
 - [Example](#example)
 
