@@ -40,20 +40,17 @@ Install environment:
 ```
 conda env create --file environment.yml
 ```
+### Configuration 
+To use SeLoRA script, the following directories should be specified in `config.yaml` dataset, `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`.
+Specify also the directory where outputs should be sent to. 
+Training setting can be modified by defining the seed, batch_size, learning rate, number of epochs, expansion threshold and initial rank within the `config.yaml` file.
+
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
-To train the SeLoRA, make sure to have the directories of `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`. Then uncomment the following line of code from the `experiment.sh` file: 
+Uncomment the following line of code from the `experiment.sh` file: 
 ```bash
 python selora_finetuning.py
 ```
-### Configuration 
-To use SeLoRA script, the following directories should be specified in `config.yaml` dataset:
-```
-dataset_path - (the path where the images should be found)
-prompts_for_generation - (the path of the excel containing the prompts used for the image generation)
-```
-Specify also the directory where outputs should be sent to. 
-Training setting can be modified by setting up the seed, batch_size, learning rate, number of epochs, expansion threshold and initial rank within the `config.yaml` file.
 
 ### Training LoRA
 To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
