@@ -31,21 +31,29 @@ Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/p
 
 Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
-## Environment 
-For setting up the environment in this repo a `environment.yml` file has been uploaded. 
+
+
+## Training
+### Environment 
+For setting up the environment, use the `environment.yml` file. 
 Install environment:
 ```
 conda env create --file environment.yml
 ```
-
-## Training
-
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
-To train the SeLoRA, make sure to have the `config.yaml` directories of `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`. Then uncomment the following line of code from the `experiment.sh` file: 
-```
+To train the SeLoRA, make sure to have the directories of `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`. Then uncomment the following line of code from the `experiment.sh` file: 
+```bash
 python selora_finetuning.py
 ```
+### Configuration 
+To use SeLoRA script, the following directories should be specified in `config.yaml` dataset:
+```
+dataset_path - (the path where the images should be found)
+prompts_for_generation - (the path of the excel containing the prompts used for the image generation)
+```
+Specify also the directory where outputs should be sent to. 
+Training setting can be modified by setting up the seed, batch_size, learning rate, number of epochs, expansion threshold and initial rank within the `config.yaml` file.
 
 ### Training LoRA
 To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
@@ -90,7 +98,11 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
 ### Computing Accuracy and AUC
-*TODO: finish*
+To compute the AUC and Accuracy scores, run the `classifier_train.py` script. For that purpose, uncomment the `python classifier_train.py` in the `experiment.sh` bash script. Specify the following arguments
+```bash
+python classifier_train.py  --test=/path/to/testset --train=/path/to/trainset --syn=/path/to/generation/full_output --merge=True --merge_path=/path/to/merged/folder/generation/
+```
+Determine the test set, train set, and set of synthetic images, as well as mode of AUC computation (merge), `False` for estimating the AUC score on the real images only, `True` for data augmentation with the synthetic outputs. Specify `merge_path`, or directory where the augmented training set of images should be created.   
 
 ## References
 - Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196)
