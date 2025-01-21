@@ -100,7 +100,9 @@ After generating the images and assessing the FID, some simple post-processing (
 ### Computing Accuracy and AUC
 To compute the AUC and Accuracy scores, run the `classifier_train.py` script. For that purpose, uncomment the `python classifier_train.py` in the `experiment.sh` bash script. Specify the following arguments
 ```bash
-python classifier_train.py  --test=/path/to/testset --train=/path/to/trainset --syn=/path/to/generation/full_output --merge=True --merge_path=/path/to/merged/folder/generation/
+python classifier_train.py  --test=/path/to/testset --train=/path/to/trainset
+--syn=/path/to/generation/full_output --merge=True
+--merge_path=/path/to/merged/folder/generation/
 ```
 Determine the test set, train set, and set of synthetic images, as well as mode of AUC computation (merge), `False` for estimating the AUC score on the real images only, `True` for data augmentation with the synthetic outputs. Specify `merge_path`, or directory where the augmented training set of images should be created.   
 
