@@ -29,7 +29,7 @@ Dataset available at [link](https://www.kaggle.com/datasets/dschettler8845/brats
 Dataset available at [link](https://zenodo.org/records/6624726)
 Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert-reviewed annotations were used (found under `/csPCa_lesion_delineations/human_expert/resampled`).
 
-Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a metadata.csv document produced that maps every available image with a textual prompt to use for the textual inversion part of the diffusion model. The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
+Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a `metadata.csv` document, which maps the relevant masks with a textual prompt. The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
 
 
@@ -41,9 +41,20 @@ Install environment:
 conda env create --file environment.yml
 ```
 ### Configuration 
-To use SeLoRA script, the following directories should be specified in `config.yaml` dataset, `dataset_path` (where the training images should be found) and `prompts_for_generation` (the prompts used for inference) up to date, as well as the `output\path`.
-Specify also the directory where outputs should be sent to. 
-Training setting can be modified by defining the seed, batch_size, learning rate, number of epochs, expansion threshold and initial rank within the `config.yaml` file.
+To use SeLoRA script, the following directories should be specified in `config.yaml` file:
+- **`dataset`**: The dataset name or identifier.
+- **`dataset_path`**: The directory where the training images are stored.
+- **`prompts_for_generation`**: The file containing prompts used for inference.
+- **`output/path`**: The directory where the output results should be saved.
+
+You can modify the training settings within the `config.yaml` file:
+- **`seed`**: The random seed for reproducibility.
+- **`batch_size`**: Number of samples per training batch.
+- **`learning_rate`**: The learning rate for the optimizer.
+- **`epochs`**: The total number of training epochs.
+- **`expansion_threshold`**: Threshold for SeLoRA's dynamic rank expansion.
+- **`initial_rank`**: The initial rank of the LoRA matrices.
+
 
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
