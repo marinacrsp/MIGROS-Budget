@@ -31,7 +31,7 @@ Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/p
 
 Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a `metadata.csv` document, which maps the relevant masks with a textual prompt. 
 \
-The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
+The *pre-processed datasets* are made available for convenience in the folders [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
 
 
@@ -44,9 +44,9 @@ conda env create --file environment.yml
 ```
 ### Configuration 
 To use SeLoRA script, the following directories should be specified in `config.yaml` file:
-- **`dataset`**: The dataset name or identifier.
 - **`dataset_path`**: The directory where the training images are stored.
-- **`prompts_for_generation`**: The file containing prompts used for inference.
+- **`report_name`**: The name of the `.csv` file containing the image names associated with the prompts. It should be in the folder defined by `dataset_path`.
+- **`prompts_for_generation`**: The `.csv` file containing the prompts used for inference. Please structure it like the provided example if you want to use your own prompts.
 - **`output/path`**: The directory where the output results should be saved.
 
 You can modify the training settings within the `config.yaml` file:
@@ -54,8 +54,8 @@ You can modify the training settings within the `config.yaml` file:
 - **`batch_size`**: Number of samples per training batch.
 - **`learning_rate`**: The learning rate for the optimizer.
 - **`epochs`**: The total number of training epochs.
-- **`expansion_threshold`**: Threshold for SeLoRA's dynamic rank expansion.
-- **`initial_rank`**: The initial rank of the LoRA matrices.
+- **`expansion_threshold`**: Threshold for SeLoRA's dynamic rank expansion (lambda).
+- **`initial_rank`**: The initial rank of the LoRA matrices. It should be set to 1 for SeLoRA.
 
 
 ### Training SeLoRA
