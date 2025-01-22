@@ -30,6 +30,7 @@ Dataset available at [link](https://zenodo.org/records/6624726)
 Labels are available at the following [GitHub](https://github.com/DIAGNijmegen/picai_labels/tree/main), for this project only the expert-reviewed annotations were used (found under `/csPCa_lesion_delineations/human_expert/resampled`).
 
 Minor pre-processing has been done with two notebooks available under [Processing](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing) ([preprocess_data_brats](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_brats.ipynb) and [preprocess_data_picai.ipynb](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Processing/preprocess_data_picai.ipynb)). The datasets were processed to extract 2D slices and a `metadata.csv` document, which maps the relevant masks with a textual prompt. 
+\
 The *pre-processed datasets* are made available for convenience in the folder [Datasets/BraTS](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS) and [Datasets/PICAI](https://github.com/LucaAnce/MIGROS-Budget/tree/main/Datasets/BraTS). Each folder then contains the training and testing set used, each with its `metadata.csv` file.
 
 
