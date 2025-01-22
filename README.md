@@ -47,7 +47,7 @@ Training setting can be modified by defining the seed, batch_size, learning rate
 
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
-Uncomment the following line of code from the `experiment.sh` file: 
+To run SeLoRA, uncomment the following line of code from the `experiment.sh` file: 
 ```bash
 python selora_finetuning.py
 ```
@@ -92,7 +92,7 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 ```
 
 ### BraTS postprocessing
-After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues in the background not being homogenous and black (used only for the brain images generated from BraTS). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
+After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues when the background was not homogenous and black (note this was only used for the generated brain images). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
 ### Computing Accuracy and AUC
 To compute the AUC and Accuracy scores, run the `classifier_train.py` script. For that purpose, uncomment the `python classifier_train.py` in the `experiment.sh` bash script. Specify the following arguments
