@@ -36,6 +36,8 @@ The *pre-processed datasets* are made available for convenience in the folders [
 
 
 ## Training
+You can use the `experiment.sh` file to run our scripts on the INFK cluster. Make sure to change the relevant paths.
+
 ### Environment 
 For setting up the environment, use the `environment.yml` file. 
 Install environment:
@@ -60,13 +62,13 @@ You can modify the training settings within the `config.yaml` file:
 
 ### Training SeLoRA
 Mao et al. 2024 made the original implementation for the SeLoRA training available at this [repository](https://anonymous.4open.science/r/SeLoRA-980D). However, this was only used as a base, and many changes were made to adapt it to the project's needs. Please note that the code published by the authors seems not to run.
-To run SeLoRA, uncomment the following line of code from the `experiment.sh` file: 
+To run SeLoRA, run:
 ```bash
 python selora_finetuning.py
 ```
 
 ### Training LoRA
-To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3`.
+To train a LoRA model, it is sufficient to change the initial rank to the desired rank and set a very high threshold. Consider that normally this value ranges from `1.0` to `1.3` for SeLoRA.
 
 ### Training StyleGAN
 We use a StyleGAN3 as our baseline. We refer to the [original repository](https://github.com/NVlabs/stylegan3) for further details.
@@ -108,13 +110,13 @@ python compute_fid.py --orig /path/to/original --syn /path/to/synthetic
 After generating the images and assessing the FID, some simple post-processing (background removal) was done. This is used to correct for issues when the background was not homogenous and black (note this was only used for the generated brain images). This can be replicated with the [postprocess_generated_brats](/Processing/postprocess_generated_brats.ipynb) notebook.
 
 ### Computing Accuracy and AUC
-To compute the AUC and Accuracy scores, run the `classifier_train.py` script. For that purpose, uncomment the `python classifier_train.py` in the `experiment.sh` bash script. Specify the following arguments
+To compute the AUC and Accuracy scores, run the `classifier_train.py` script. Specify the following arguments
 ```bash
 python classifier_train.py  --test=/path/to/testset --train=/path/to/trainset
 --syn=/path/to/generation/full_output --merge=True
 --merge_path=/path/to/merged/folder/generation/
 ```
-Determine the test set, train set, and set of synthetic images, as well as mode of AUC computation (merge), `False` for estimating the AUC score on the real images only, `True` for data augmentation with the synthetic outputs. Specify `merge_path`, or directory where the augmented training set of images should be created.   
+Determine the test set, train set, and set of synthetic images, as well as mode of AUC computation `--merge`, `False` for estimating the AUC score on the real images only, `True` for data augmentation with the synthetic outputs. Specify `merge_path`, or directory where the augmented training set of images should be created.   
 
 ## References
 - Mao, Yuchen, et al. "SeLoRA: Self-Expanding Low-Rank Adaptation of Latent Diffusion Model for Medical Image Synthesis." arXiv preprint arXiv:2408.07196 (2024). [LINK](https://arxiv.org/abs/2408.07196)
