@@ -12,8 +12,8 @@ Authors: Luca Anceschi, Marina Crespo Aguirre, Luca Drole
 - [Datasets](##Datasets)
 - [Environment](##Environment)
 - [Training](##Training)
-- [Computing the FID](#computing-the-fid)
-- [Example](#example)
+- [Evaluation](##Evaluation)
+- [References](##References)
 
 ## Introduction
 Low-rank adaptation presents a promising avenue for fine-tuning diffusion models at a relatively low computational cost. We are especially interested in assessing whether Self-Expanding Low-Rank adaptation can be used to produce realistic MRI data.
