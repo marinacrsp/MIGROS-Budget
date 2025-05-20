@@ -8,8 +8,8 @@
 
 module add cuda/12.1
 
-source /home/mcrespo/miniconda3/etc/profile.d/conda.sh
-conda activate /home/mcrespo/miniconda3/envs/sel_py11
+source /homes/1/ma1282/conda.sh
+conda activate /homes/1/ma1282/sel_py11
 nvcc --version
 
 # python selora_training.py

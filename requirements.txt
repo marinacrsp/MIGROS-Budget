@@ -1,0 +1,119 @@
+# PyTorch with CUDA 12.4
+# --extra-index-url https://download.pytorch.org/whl/cu124
+# torch==2.4.1
+# torchvision==0.19.1
+# torchaudio==2.4.1
+# 
+# Core packages
+torch-fidelity==0.3.0
+torcheval==0.0.7
+torchmetrics==1.6.1
+transformers==4.48.1
+diffusers==0.31.0
+numpy==1.26.4
+scipy==1.14.1
+pandas==2.2.3
+scikit-learn==1.5.2
+matplotlib-inline==0.1.7
+tqdm==4.67.1
+fsspec==2024.12.0
+requests==2.32.3
+pyyaml==6.0.2
+joblib==1.4.2
+packaging==24.2
+typing-extensions==4.12.2
+typing_extensions==4.12.2
+
+# Jupyter ecosystem
+jupyter==1.1.1
+notebook==7.3.2
+jupyterlab==4.3.4
+ipywidgets==8.1.5
+widgetsnbextension==4.0.13
+jupyterlab-widgets==3.0.13
+jupyterlab-pygments==0.3.0
+jupyter-core==5.7.2
+jupyter-client==8.6.3
+jupyter-console==6.6.3
+jupyter-server==2.15.0
+jupyter-server-terminals==0.5.3
+jupyter-events==0.11.0
+jupyter-lsp==2.2.5
+
+# Notebook utilities
+nbformat==5.10.4
+nbconvert==7.16.5
+nbclient==0.10.2
+ipykernel==6.29.5
+ipython==8.31.0
+traitlets==5.14.3
+psutil==6.1.1
+pyzmq==26.2.0
+
+# Transformers & tokenization
+tokenizers==0.21.0
+safetensors==0.4.5
+
+# Validation and schema
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+referencing==0.36.1
+rpds-py==0.22.3
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+
+# HTTP and networking
+httpx==0.28.1
+httpcore==1.0.7
+h11==0.14.0
+urllib3==2.2.3
+idna==3.10
+charset-normalizer==3.4.0
+pysocks==1.7.1
+
+# Misc utilities
+filelock==3.13.1
+regex==2024.11.6
+pycparser==2.22
+zipp==3.21.0
+anyio==4.8.0
+sniffio==1.3.1
+nest-asyncio==1.6.0
+platformdirs==4.3.6
+debugpy==1.8.12
+decorator==5.1.1
+comm==0.2.2
+executing==2.1.0
+pure-eval==0.2.3
+stack-data==0.6.3
+parso==0.8.4
+jedi==0.19.2
+prompt-toolkit==3.0.50
+wcwidth==0.2.13
+six==1.16.0
+arrow==1.3.0
+traitlets==5.14.3
+certifi==2024.12.14
+colorama==0.4.6
+bleach==6.2.0
+soupsieve==2.6
+beautifulsoup4==4.12.3
+fastjsonschema==2.21.1
+jsonpointer==3.0.0
+pandocfilters==1.5.1
+webencodings==0.5.1
+websocket-client==1.8.0
+send2trash==1.8.3
+mistune==3.1.0
+overrides==7.7.0
+uri-template==1.3.0
+fqdn==1.5.1
+isoduration==20.11.0
+python-json-logger==3.2.1
+prometheus-client==0.21.1
+types-python-dateutil==2.9.0.20241206
+asttokens==3.0.0
+babel==2.16.0
+async-lru==2.0.4
+argon2-cffi==23.1.0
+argon2-cffi-bindings==21.2.0

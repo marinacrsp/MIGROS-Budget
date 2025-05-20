@@ -2,8 +2,8 @@ name: sel_py11
 channels:
   - defaults
   - conda-forge
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
+  # - https://repo.anaconda.com/pkgs/main
+  # - https://repo.anaconda.com/pkgs/r
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=2_gnu
@@ -226,4 +226,4 @@ dependencies:
       - webencodings==0.5.1
       - websocket-client==1.8.0
       - widgetsnbextension==4.0.13
-prefix: /home/mcrespo/miniconda3/envs/sel_py11
+prefix: ./sel_py11

@@ -22,7 +22,7 @@ def parse_args() -> argparse.Namespace:
 
 def save_config(config: Dict[str, Any]) -> None:
     """Save configuration to a YAML file."""
-    path = Path(config["output"]["path"]) / config["timestamp"]
+    path = Path(config["output"]["folder_name"],config["timestamp"])
     # Ensure path exists
     path.mkdir(parents=True, exist_ok=True)
 

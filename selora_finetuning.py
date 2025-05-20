@@ -58,7 +58,7 @@ REPORTS_PATH = os.path.join(DATA_STORAGE, config["dataset"]["report_name"])
 PROMPT_GEN_PATH = config["dataset"]["prompts_for_generation"]
 
 ## Load the output directory, where the results will be printed
-output_path = os.path.join(config["output"]["path"], config["timestamp"])
+output_path = os.path.join(config["output"]["folder_name"], config["timestamp"])
 save_result_path = output_path
 
 
@@ -550,7 +550,6 @@ class Trainer:
 
             noisy_latents = self.noise_scheduler.add_noise(latents, noise, timesteps)
 
-
             # Get the text embedding for conditioning
             encoder_hidden_states = self.text_encoder(prompt_idxs)[0]
             # Predict the noise residual (x0 - xt)
@@ -608,7 +607,7 @@ class Trainer:
 
                 pixel_values = batch["instance_images"].to(device, dtype=self.WEIGHT_DTYPE)
                 prompt_idxs  = batch["instance_prompt_ids"].to(device).squeeze(1)
-
+                breakpoint()
                 # Convert images to latent space
                 latents = self.vae.encode(pixel_values).latent_dist.sample()
                 latents = latents * self.vae.config.scaling_factor
