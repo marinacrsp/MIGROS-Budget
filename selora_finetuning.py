@@ -250,7 +250,7 @@ class Linear(nn.Linear, LoRALayer):
         if self.merge_weights and not self.merged:
             # Merge the weights and mark it
             if self.r > 0:
-
+                breakpoint()
                 self.weight.data += T(self.lora_B @ self.lora_A) * self.scaling
 
             self.merged = True
@@ -480,7 +480,7 @@ class Trainer:
     - threshold: tunes when to expand the rank of the LoRA layers. Higher threshold means less expansion. Ideally between 1.0 and 1.3 (see SeLoRA paper)
     - total_step: the total number of epochs
     '''
-    def __init__(self, vae, unet, text_encoder, noise_scheduler, optimizer, train_dl, total_epoch, WEIGHT_DTYPE, threshold = 2, log_period = 20, expand_step = 20):
+    def __init__(self, vae, unet, text_encoder, noise_scheduler, optimizer, train_dl, total_epoch, WEIGHT_DTYPE, threshold = 2, log_period = 20, expand_step = 1000):
         self.vae = vae.to(device, dtype=WEIGHT_DTYPE)
         
         self.unet = unet.to(device, dtype=WEIGHT_DTYPE)
@@ -607,7 +607,7 @@ class Trainer:
 
                 pixel_values = batch["instance_images"].to(device, dtype=self.WEIGHT_DTYPE)
                 prompt_idxs  = batch["instance_prompt_ids"].to(device).squeeze(1)
-                breakpoint()
+
                 # Convert images to latent space
                 latents = self.vae.encode(pixel_values).latent_dist.sample()
                 latents = latents * self.vae.config.scaling_factor
@@ -707,8 +707,7 @@ if __name__ == "__main__":
     unet.requires_grad_(False)
 
     clear_cache()
-
-    # Replace the Linear layers in the Unet and Text encoder with SeLoRA
+   # Replace the Linear layers in the Unet and Text encoder with SeLoRA
     unet_lora = set_Linear_SeLoRA(unet, UNET_TARGET_MODULES)
     text_encoder_lora = set_Linear_SeLoRA(text_encoder, TEXT_ENCODER_TARGET_MODULES) 
 
@@ -746,7 +745,7 @@ if __name__ == "__main__":
         WEIGHT_DTYPE = WEIGHT_DTYPE,
         threshold = THRESHOLD, 
         log_period = 40,
-        expand_step = 40,
+        expand_step = 200,
     )
 
     trainer.train()
@@ -779,7 +778,7 @@ if __name__ == "__main__":
     prompts = []
     file_names = []
 
-    for place in range(len(metadata_image_generation)):
+    for place in range(len(metadata_image_generation))[:10]:
         temp_prompts = metadata_image_generation['text'][place]
 
         temp = new_pipe(temp_prompts, height = 224, width = 224).images[0]

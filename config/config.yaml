@@ -10,10 +10,7 @@ output:
 
 dataset:
   dataset_path: ./Datasets/BraTS/trainset
-  #main_path: /home/lanceschi/migros_deepL
-  #dataset_name: /picai200
-  #sequence_type: /t2w
-  report_name: /metadata.csv
+  report_name: metadata.csv
   prompts_for_generation: ./Generation Prompts/metadata_generation_brats.csv
   
 
@@ -22,7 +19,7 @@ batch_size: 8
 lr: 1.e-4
 epochs: 150
 th: 1.0
-rank: 1 
+rank: 8 # Initial rank to depart from 
 
 model:
   model_id: runwayml/stable-diffusion-v1-5
